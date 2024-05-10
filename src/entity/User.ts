@@ -1,5 +1,5 @@
 import { type } from "os"
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, TableInheritance ,ChildEntity,CreateDateColumn, UpdateDateColumn  } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, TableInheritance ,ChildEntity,CreateDateColumn, UpdateDateColumn,AfterLoad  } from "typeorm"
 import { Email } from "./Email"
 import { supTicket,Article,Attachment,Address,Verification,Payment } from "./"
 
@@ -22,10 +22,10 @@ export class User {
     @Column({default:2980865431210,select:true})
     IDcardNumber: number
 
-    @Column({type: "varchar",/*default:"test_279346",nullable:false*/})
+    @Column({type: "varchar",/*default:"test_279346", nullable:false */})
     username: string;
 
-    @Column({type: "varchar", default: "test_297438",select:true})
+    @Column({type: "varchar", default: "test_297438", nullable:false,select:true})
     passwordHash: string
 
     @Column(()=>Email)
@@ -45,6 +45,13 @@ export class User {
     @OneToMany(()=>Attachment,media=>media.uploader) media:Attachment[]
     @OneToMany(()=>Payment,payment=>payment.user) payments:Payment[]
    
+    @AfterLoad()
+    updatalogininfo(){
+        const {username,passwordHash,id}=this
+        if(username==null || username=="") this.username=`test_279346__${id}`
+        if(passwordHash==null || passwordHash=="") this.passwordHash=`test_297438__${id}`
+    }
+
 }
 
 
