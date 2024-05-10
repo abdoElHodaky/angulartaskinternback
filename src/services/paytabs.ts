@@ -1,5 +1,6 @@
 const paytabs =require("paytabs_pt2");
-import { Payment , User} from "../entity/";
+import { User } from "../entity/User";
+import { Payment } from "../entity/Payment";
 export class PayTabService{
   async values(obj:any){
       let arr=[]
