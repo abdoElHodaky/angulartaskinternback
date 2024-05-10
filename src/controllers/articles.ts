@@ -1,4 +1,4 @@
-import { service } from "../services/";
+import { services } from "../services/enum";
 import { Article  } from "../entity/"
 //import { AppDataSource } from "../_datasource";
 import { CreateArticleDto } from "../dto/create-article.dto"
@@ -9,8 +9,8 @@ import { Response ,Request} from "express"
 @Controller('/articles')
 export class ArticleController {
   
-  @service("Article")
-  private articleS;
+  
+  private articleS=services.Article
   
   constructor( ) {}
 
