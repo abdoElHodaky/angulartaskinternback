@@ -14,7 +14,7 @@ export let services:any={
   Article:new ArticleService(),
   Attachment:new AttachmentService(),
   Ticket:new UserTicketService(),
-  supTicket:new supTicketService(),
+ // supTicket:new supTicketService(),
   Payment:new PaymentService(),
   
 }
@@ -27,7 +27,7 @@ export let _services:object={
   "Article":new ArticleService(),
   "Attachment":new AttachmentService(),
   "Ticket":new UserTicketService(),
-  "supTicket":new supTicketService(),
+  //"supTicket":new supTicketService(),
   "Payment":new PaymentService(),
   
 }
