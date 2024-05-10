@@ -53,7 +53,7 @@ suptickeroute.post("/users/:userid/tickets",(req:Request,res:Response)=>{
         #swagger.requestBody={
           required:true,
           description: 'add tickets. for specific user',
-          schema: { $ref: '#/definitions/userAddTicket' }
+          schema: { $ref: '#/components/schemas/userAddTicket' }
         }
     */
     
