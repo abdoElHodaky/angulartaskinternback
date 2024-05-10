@@ -1,4 +1,4 @@
-import { service } from "../services/";
+import { services } from "../services/enum";
 import { Attachment } from "../entity/"
 //import { AppDataSource } from "../_datasource";
 //import { CreateArticleDto } from "../dto/create-article.dto"
@@ -8,8 +8,8 @@ import { Response ,Request} from "express"
 
 @Controller('/attachments')
 export class AttachmentController {
-  @service("Attachment")
-  private attachmentS:any
+  
+  private attachmentS:any= services.Attachment
   
   constructor( ) {}
 
