@@ -18,6 +18,8 @@ if(AppDataSource.isConnected==false)
 
 },500000)
 */
+const { SwaggerTheme, SwaggerThemeNameEnum } = require('swagger-themes');
+const theme = new SwaggerTheme();
 
 app.use(urlencoded({extended: true}))
 app.use(cors())
@@ -40,7 +42,12 @@ const swaggerDocument = require('../swagger.json');
 app.get("/",(req,res)=>{
     res.redirect("endpoints")
 })
-app.use('/endpoints', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/endpoints', swaggerUi.serve, swaggerUi.setup(swaggerDocument,{
+   explorer: false,
+   customCss:theme.getBuffer(SwaggerThemeNameEnum.MATERIAL),
+   customSiteTitle:" Endpoints",
+   //customfavIcon: "../assets/favicon-16x16.png"
+}));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
