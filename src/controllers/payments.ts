@@ -33,7 +33,7 @@ export class PaymentController {
   }
 
   @Post("/callback")
-  async callback(@Req() req:Request):Promise<any|void>{
+  async callback(@Req() req:Request):Promise<any>{
     let res=await this.paymentService.payCallback(req.body)
     let rp=await this.paymentService.verify(res.transR,res.paymentId)
     return rp
@@ -41,7 +41,7 @@ export class PaymentController {
   }
 
   @Post("/return")
-  async return(@Req() req:Request):Promise<any|void>{
+  async return(@Req() req:Request):Promise<any>{
     let res=await this.paymentService.payCallback(req.body)
     let rp=await this.paymentService.verify(res.transR,res.paymentId)
     return rp
