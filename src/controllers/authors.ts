@@ -1,4 +1,4 @@
-import { service } from "../services/";
+import { services } from "../services/enum";
 import { Article , Author } from "../entity/"
 import { AppDataSource } from "../_datasource";
 import { CreateAuthorDto } from "../dto/"
@@ -9,8 +9,8 @@ import { Error } from "common-errors";
 
 @Controller('/authors')
 export class AuthorController {
-  @service("Author")
-  private readonly authorS:any
+  
+  private readonly authorS:any=services.Author
   constructor( ){}
   
   @Get("")
