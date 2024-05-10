@@ -8,7 +8,7 @@ import { Book } from "./entity/Book";
 import { supTicket } from "./entity/supTicket";
 import { User } from "./entity/User"
 import { Verification } from "./entity/Verification";
-
+import { Payment } from "./entity/Payment";
 export const _AppDataSource = new DataSource({
     type: "sqlite",
     database: "database.sqlite",
@@ -18,7 +18,7 @@ export const _AppDataSource = new DataSource({
     synchronize: true,
     logging: false,
     entities: [User,supTicket,Article,
-      Verification,Author,Attachment,Book],
+      Verification,Author,Attachment,Book,Payment],
     migrations: [],
     subscribers: [],
     extra: {
