@@ -211,10 +211,10 @@ articlesroute.get("/articles",(req,res)=>{
 articlesroute.post("/articles",({body},res)=>{
     /* 	#swagger.tags = ['Article']
         #swagger.description = 'Endpoint to add new article' 
-        #swagger.parameters['body'] = {
-            in: 'body',
+        #swagger.requestBody= {
+            required:true,
             description: 'Add new article.',
-            schema: { $ref: '#/definitions/AddArticle' }
+            schema: { $ref: '#/components/schemas/AddArticle' }
     } */
     
    /* let article:Article=body.article
