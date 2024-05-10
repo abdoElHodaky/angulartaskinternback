@@ -9,7 +9,7 @@ export class Payment {
     @Column({type: "varchar", nullable: true})
     title: string;
 
-    @Column({type: "varchar"})
+    @Column(/*{type:'timestamptz'}*/)
     date: string;
     
     @Column({type: "varchar", nullable: true})
@@ -24,5 +24,9 @@ export class Payment {
     @Column(()=>Address)
     shipping: Address;
     
+    @Column({type: "varchar", nullable: true})
+    transR: string;
+
+
     @ManyToOne(()=>User,user=>user.payments) user:User;
 }
