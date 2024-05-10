@@ -30,10 +30,10 @@ authorsroutes.get("/authors",function(req:Request, res:Response){
     
 /*  #swagger.tags = ['Author'] 
     #swagger.description = 'Endpoint to add author' 
-    #swagger.parameters['body'] = {
-            in: 'body',
+    #swagger.requestBody = {
+            required:true,
             description: 'Add new author.',
-            schema: { $ref: '#/definitions/CreateAuthor' }
+            schema: { $ref: '#/components/schemas/CreateAuthor' }
     } 
     */
       
