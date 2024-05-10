@@ -1,4 +1,4 @@
-import { UserService } from "../services/";
+import { services } from "../services/enum";
 import { Article ,User } from "../entity/"
 import { AppDataSource } from "../_datasource";
 //import { CreateArticleDto } from "../dto/create-article.dto"
@@ -9,7 +9,7 @@ import { Error , NotFoundError } from "common-errors";
 
 @Controller('/payments')
 export class PaymentController {
-  
+  private paymentService=services.Payment
   
   constructor(){}
   
@@ -33,18 +33,18 @@ export class PaymentController {
   }
 
   @Post("/callback")
-  async callback(@Req() req:Request){
+  async callback(@Req() req:Request):Promise<any|void>{
     let res=await this.paymentService.payCallback(req.body)
     let rp=await this.paymentService.verify(res.transR,res.paymentId)
-   
+    return rp
     
   }
 
   @Post("/return")
-  async return(@Req() req:Request){
+  async return(@Req() req:Request):Promise<any|void>{
     let res=await this.paymentService.payCallback(req.body)
     let rp=await this.paymentService.verify(res.transR,res.paymentId)
-    
+    return rp
   }
   
 }
