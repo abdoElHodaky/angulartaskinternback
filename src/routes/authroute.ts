@@ -7,10 +7,10 @@ authroute.post("/auth/register",(req,res)=>{
     
 /*  #swagger.tags = ['Auth'] 
     #swagger.description = 'Endpoint to register specific user' 
-    #swagger.parameters['body'] = {
-            in: 'body',
+    #swagger.requestBody = {
+            required:true,
             description: 'Add new user.',
-            schema: { $ref: '#/definitions/CreateUser' }
+            schema: { $ref: '#/components/schemas/CreateUser' }
     } 
     */
     
@@ -25,10 +25,10 @@ authroute.post("/auth/login",(req,res)=>{
     
 /* 	#swagger.tags = ['Auth'] 
     #swagger.description = 'Endpoint to login specific user' 
-     #swagger.parameters['body'] = {
-            in: 'body',
+     #swagger.requestBody = {
+            requiresd: true,
             description: 'login of specific user.',
-            schema: { $ref: '#/definitions/LoginUser' }
+            schema: { $ref: '#/components/schemas/LoginUser' }
     } 
     */
     
