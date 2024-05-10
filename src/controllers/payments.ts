@@ -14,7 +14,7 @@ export class PaymentController {
   constructor(){}
   
   @Get("/")
-  async all():Promise<User[]>{
+  async all():Promise<User[]|void>{
     //this.userS.datasource=AppDataSource
     /* 	#swagger.tags = ['User']
         #swagger.description = 'Endpoint to get users' */
