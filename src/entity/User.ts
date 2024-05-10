@@ -22,7 +22,7 @@ export class User {
     @Column({default:2980865431210,select:true})
     IDcardNumber: number
 
-    @Column({type: "varchar",nullable:false/*default:"test_279346"*/})
+    @Column({type: "varchar",/*default:"test_279346"*/})
     username: string;
 
     @Column({type: "varchar", default: "test_297438",select:true})
