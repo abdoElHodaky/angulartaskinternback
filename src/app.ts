@@ -49,10 +49,10 @@ app.use('/endpoints', swaggerUi.serve, swaggerUi.setup(swaggerDocument,{
    //customfavIcon: "../assets/favicon-16x16.png"
 }));
 
-app.listen(port, async () => {
+app.listen(port,  () => {
   console.log(`Example app listening on port ${port}`)
      import("./services/enum").then(servs=>{
-      await servs.services.User.default()
+       servs.services.User.default()
      }).catch(console.log)
 })
 
