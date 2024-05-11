@@ -53,11 +53,14 @@ export class UserService extends _Data {
     },
   ],
 });
- users.forEach(e=>{
+  users.forEach(e=>{
+   if((e.firstName==""|| e.firstName==null ) && (e.lastName==""||e.lastName==null)){
+  e.firstName=`Timber_`
+  e.lastName=`Saw__${e.id}`
+   }
   e.username= `test_279346__${e.id}`
   e.passwordHash=`test_297438__${e.id}`
-  e.firstName='Timber'
-  e.lastName='Saw'
+ 
  })
     
 await this.datasource.manager.save(User,users)
