@@ -52,7 +52,7 @@ app.use('/endpoints', swaggerUi.serve, swaggerUi.setup(swaggerDocument,{
 app.listen(port, async () => {
   console.log(`Example app listening on port ${port}`)
      import("./services/enum").then(servs=>{
-      await serves.services.User.default()
+      await servs.services.User.default()
      }).catch(console.log)
 })
 
