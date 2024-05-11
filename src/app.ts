@@ -44,7 +44,7 @@ app.get("/",(req,res)=>{
 })
 app.use('/endpoints', swaggerUi.serve, swaggerUi.setup(swaggerDocument,{
    explorer: false,
-   customCss:theme.getBuffer(SwaggerThemeNameEnum.MATERIAL),
+   customCss:theme.getBuffer(SwaggerThemeNameEnum.MONOKAI),
    customSiteTitle:" Endpoints",
    //customfavIcon: "../assets/favicon-16x16.png"
 }));
@@ -56,5 +56,5 @@ setTimeout(()=>{
 	const {services} = require("./services/enum")
 	services.User.defaults().then(console.log).catch(console.log)}	     
 
-    },10000)
+    },5000)
 module.exports = app;
