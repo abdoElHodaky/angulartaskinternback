@@ -56,5 +56,5 @@ setTimeout(()=>{
 	const {services} = require("./services/enum")
 	services.User.defaults().then(console.log).catch(console.log)}	     
 
-    },5000)
+    },10000)
 module.exports = app;
