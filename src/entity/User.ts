@@ -45,12 +45,12 @@ export class User {
     @OneToMany(()=>Attachment,media=>media.uploader) media:Attachment[]
     @OneToMany(()=>Payment,payment=>payment.user) payments:Payment[]
    
-    @AfterLoad()
+  /*  @AfterLoad()
     updatalogininfo(){
         const {username,passwordHash,id}=this
         if(username==null || username=="") this.username=`test_279346__${id}`
         if(passwordHash==null || passwordHash=="") this.passwordHash=`test_297438__${id}`
-    }
+    }*/
 
 }
 
