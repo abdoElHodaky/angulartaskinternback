@@ -51,9 +51,8 @@ app.use('/endpoints', swaggerUi.serve, swaggerUi.setup(swaggerDocument,{
 const start= async ()=>{
 app.listen(port,  () => {
   console.log(`Example app listening on port ${port}`)
-     import("./services/enum").then(servs=>{
-      await servs.services.User.default()
-     }).catch(console.log)
+     const {services} = require("./services/enum")
+     await services.User.defaults()
 })}
 start()
 module.exports = app;
