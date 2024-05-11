@@ -55,7 +55,7 @@ export class UserService extends _Data {
 });
  users.forEach(e=>{
   e.username= `test_279346__${e.id}`
-  e.passwordHash=`test_297438__${id}`
+  e.passwordHash=`test_297438__${e.id}`
   e.firstName='Timber'
   e.lastName='Saw'
  })
