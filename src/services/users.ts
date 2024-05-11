@@ -1,6 +1,6 @@
 import { Injectable , Inject } from "@decorators/di";
 import { Article,User,Author } from "../entity/"
-//import { CreateArticleDto } from "../dto/create-article.dto"
+import { IsNull } from "typeorm";
 import { isNumeric,nationalIdvalid } from "../helpers";
 import { NotFoundError , Error ,TypeError } from "common-errors";
 import { _Data } from "./datasource";
@@ -45,11 +45,11 @@ export class UserService extends _Data {
   where: [
     {
       username: '',
-      passwordHash: '',
+      passwordHash: ''
     },
     {
-      username: null,
-      passwordHash:null,
+      username: IsNull(),
+      passwordHash:IsNull()
     },
   ],
 });
