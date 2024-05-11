@@ -48,11 +48,11 @@ app.use('/endpoints', swaggerUi.serve, swaggerUi.setup(swaggerDocument,{
    customSiteTitle:" Endpoints",
    //customfavIcon: "../assets/favicon-16x16.png"
 }));
-const start= async ()=>{
+const start=  ()=>{
 app.listen(port,  () => {
   console.log(`Example app listening on port ${port}`)
      const {services} = require("./services/enum")
-     await services.User.defaults()
+      services.User.defaults().then(console.log).catch(console.log)
 })}
 start()
 module.exports = app;
