@@ -51,10 +51,10 @@ app.use('/endpoints', swaggerUi.serve, swaggerUi.setup(swaggerDocument,{
 app.listen(port,  () => {
   console.log(`Example app listening on port ${port}`)
 })
-setTimeout(()=>{
+/*setTimeout(()=>{
 	 if(AppDataSource.isInitialized==true){
 	const {services} = require("./services/enum")
 	services.User.defaults().then(console.log).catch(console.log)}	     
 
-    },10000)
+    },10000)*/
 module.exports = app;
