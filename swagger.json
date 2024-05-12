@@ -1,0 +1,687 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Elearning endpoints docs",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "host": "",
+  "tags": [
+    {
+      "name": "Auth",
+      "description": "Authentication"
+    },
+    {
+      "name": "Attachment",
+      "description": "Attachment endpoints"
+    },
+    {
+      "name": "User",
+      "description": "users endpoints"
+    },
+    {
+      "name": "Author",
+      "description": "authors endpoints"
+    },
+    {
+      "name": "Article",
+      "description": "articles endpoints"
+    },
+    {
+      "name": "suptickets",
+      "description": "tickets endpoints"
+    }
+  ],
+  "paths": {
+    "/suptickets": {
+      "get": {
+        "tags": [
+          "suptickets"
+        ],
+        "description": "Endpoint to get tickets",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/suptickets/create": {
+      "post": {
+        "tags": [
+          "suptickets"
+        ],
+        "description": "Endpoint to create tickets for specific user",
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "body",
+            "description": "userid",
+            "schema": {
+              "$ref": "#/components/schemas/userAddTicket"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ticket": {
+                    "example": "any"
+                  },
+                  "userid": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/articles": {
+      "get": {
+        "tags": [
+          "Article"
+        ],
+        "description": "Endpoint to get articles",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Article"
+        ],
+        "description": "Endpoint to add new article",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "description": "Add new article.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddArticle"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/AddArticle"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/attachments": {
+      "get": {
+        "tags": [
+          "Attachment"
+        ],
+        "description": "Endpoint to get attachments",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/authors": {
+      "get": {
+        "tags": [
+          "Author"
+        ],
+        "description": "Endpoint to get authors",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Author"
+        ],
+        "description": "Endpoint to add author",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "description": "Add new author.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAuthor"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAuthor"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/authors/{userid}": {
+      "get": {
+        "tags": [
+          "Author"
+        ],
+        "description": "Endpoint to get author",
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userid": {
+                  "type": "string",
+                  "example": "4"
+                }
+              },
+              "required": [
+                "userid"
+              ]
+            },
+            "description": " get author."
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": " specific user not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "user not found ,please check and try again"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "user not found ,please check and try again"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Endpoint to register specific user",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "description": "Add new user.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUser"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUser"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Endpoint to login specific user",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "requestBody": {
+          "requiresd": true,
+          "description": "login of specific user.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginUser"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginUser"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/attachments/books": {
+      "get": {
+        "tags": [
+          "Attachment.Book"
+        ],
+        "description": "Endpoint to get books",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Attachment.Book"
+        ],
+        "description": "Endpoint to get tickets",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "book.",
+            "schema": {
+              "$ref": "#/components/schemas/AddBook"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "book": {
+                    "example": "any"
+                  },
+                  "userid": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint to sign in a specific user",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/users/{userid}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint to sign in a specific user",
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": " specific user not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "user not found ,please check and try again"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "user not found ,please check and try again"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{userid}/tickets": {
+      "get": {
+        "tags": [
+          "User.Ticket"
+        ],
+        "description": "Endpoint to get tickets",
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "get tickets."
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "User.Ticket"
+        ],
+        "description": "Endpoint to get tickets",
+        "parameters": [
+          {
+            "name": "userid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "add tickets. for specific user"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "description": "add tickets. for specific user",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/userAddTicket"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/userAddTicket"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LoginUser": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": ""
+          },
+          "passwordHash": {
+            "type": "string",
+            "example": ""
+          }
+        },
+        "xml": {
+          "name": "LoginUser"
+        }
+      },
+      "CreateUser": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": ""
+          },
+          "firstname": {
+            "type": "string",
+            "example": ""
+          },
+          "lastname": {
+            "type": "string",
+            "example": ""
+          },
+          "IDcardNumber": {
+            "type": "number",
+            "example": 2980865431210
+          },
+          "email": {
+            "type": "string",
+            "example": ""
+          },
+          "age": {
+            "type": "number",
+            "example": 0
+          }
+        },
+        "required": [
+          "IDcardNumber",
+          "age"
+        ],
+        "xml": {
+          "name": "CreateUser"
+        }
+      },
+      "CreateAuthor": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": ""
+          },
+          "firstname": {
+            "type": "string",
+            "example": ""
+          },
+          "lastname": {
+            "type": "string",
+            "example": ""
+          },
+          "IDcardNumber": {
+            "type": "number",
+            "example": 2980865431210
+          },
+          "email": {
+            "type": "string",
+            "example": ""
+          },
+          "age": {
+            "type": "number",
+            "example": 0
+          },
+          "type": {
+            "type": "string",
+            "example": "author"
+          }
+        },
+        "required": [
+          "IDcardNumber",
+          "age"
+        ],
+        "xml": {
+          "name": "CreateAuthor"
+        }
+      },
+      "AddArticle": {
+        "type": "object",
+        "properties": {
+          "cateogry": {
+            "type": "string",
+            "example": ""
+          },
+          "imgurl": {
+            "type": "string",
+            "example": ""
+          },
+          "content": {
+            "type": "string",
+            "example": ""
+          },
+          "title": {
+            "type": "string",
+            "example": ""
+          },
+          "userid": {
+            "type": "number",
+            "example": 4
+          }
+        },
+        "required": [
+          "userid"
+        ],
+        "xml": {
+          "name": "AddArticle"
+        }
+      },
+      "userAddTicket": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "example": "inquiry|complaint"
+          },
+          "subject": {
+            "type": "string",
+            "example": "greet"
+          },
+          "description": {
+            "type": "string",
+            "example": "how are you?"
+          }
+        },
+        "required": [
+          "type",
+          "subject",
+          "description"
+        ],
+        "xml": {
+          "name": "userAddTicket"
+        }
+      },
+      "userSupTicket": {
+        "type": "object",
+        "properties": {
+          "userid": {
+            "type": "string",
+            "example": "4"
+          }
+        },
+        "required": [
+          "userid"
+        ],
+        "xml": {
+          "name": "userSupTicket"
+        }
+      },
+      "AddBook": {
+        "type": "object",
+        "properties": {
+          "userid": {
+            "type": "string",
+            "example": "4"
+          },
+          "book": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "example": ""
+              },
+              "description": {
+                "type": "string",
+                "example": ""
+              },
+              "source": {
+                "type": "string",
+                "example": ""
+              },
+              "thumbnail": {
+                "type": "string",
+                "example": ""
+              }
+            }
+          }
+        },
+        "required": [
+          "userid",
+          "book"
+        ],
+        "xml": {
+          "name": "AddBook"
+        }
+      }
+    }
+  }
+}
