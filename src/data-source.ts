@@ -10,8 +10,11 @@ import { User } from "./entity/User"
 import { Verification } from "./entity/Verification";
 import { Payment } from "./entity/Payment";
 export const _AppDataSource = new DataSource({
-    type: "sqlite",
-    database: "database.sqlite",
+    type: "mysql",
+    host:"sql.db4free.net",
+    username:"abdo_grpcendpoin",
+    password:"arh.27934",
+    database:"grpcendpoints",
     cache: {
         type:"ioredis",
         duration: 300000
