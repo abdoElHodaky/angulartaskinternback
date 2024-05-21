@@ -13,6 +13,7 @@ export const _AppDataSource = new DataSource({
     type: "sqlite",
     database: "database.sqlite",
     cache: {
+        type:"ioredis",
         duration: 300000
     },
     synchronize: true,
