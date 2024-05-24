@@ -12,7 +12,9 @@ export class ArticleService extends _Data {
   async all():Promise<Article[]>
   {
     //console.log(this._source)
-    return await this.datasource.manager.find(Article)
+    return await this.datasource.manager.find(Article,{
+      cache:true
+    })
   }
 
  async create(createArticleDto:CreateArticleDto):Promise<Article|void>{
