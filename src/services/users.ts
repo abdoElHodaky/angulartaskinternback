@@ -13,7 +13,9 @@ export class UserService extends _Data {
 
   async all():Promise<User[]>{
     //console.log(this.datasource)
-    return await this.datasource.manager.find(User)
+    return await this.datasource.manager.find(User,{
+      cache:true
+    })
   }
   
   async id(userId:string):Promise<User|Error|void> {
