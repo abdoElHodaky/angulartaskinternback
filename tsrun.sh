@@ -2,4 +2,4 @@
 
 npm run build
 node swagautogen.js
-node ./dist/app.js
+pm2-runtime "./dist/app.js" -i 0
