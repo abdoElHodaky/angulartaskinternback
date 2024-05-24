@@ -19,7 +19,8 @@ export class UserTicketService extends _Data {
            },
            relations:{
             tickets:true
-           }
+           },
+          cache:true
             })
     let tickets=user.tickets
     return tickets }
