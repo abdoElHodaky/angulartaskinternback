@@ -5,9 +5,11 @@
    "main": "app.js",
    "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "ts-node src/app.ts",
+      "start": "pm2-runtime dist/app.js -i 2",
       "typeorm": "typeorm-ts-node-commonjs",
-      "build": "tsc"
+      "build": "tsc ",
+      "swaggergen": "node swagautogen.js",
+      "redis": "redis-server"
    },
    "author": "abdoElHodaky",
    "license": "ISC",
