@@ -1,23 +1,20 @@
-
 import "reflect-metadata";
+import { slowDown } from 'express-slow-down'
+import { RedisStore } from 'rate-limit-redis'
+import RedisClient from 'ioredis'
 import application from "express"
 import { json,urlencoded } from "express";
-//import { rateLimit } from 'express-rate-limit'
 import cors from "cors";
-import { AppDataSource } from "./_datasource";
+//import { AppDataSource } from "./_datasource";
 import { apiv1 } from "./routes";
 const app=application();
 const port = process.env.PORT||4000
-/*setInterval(function (){
-if(AppDataSource.isConnected==false)
-{
-  AppDataSource.connect().then(e=>{
-  console.log("connected")
-  }).catch(console.log)
-}
-
-},500000)
-*/
+const limiter = slowDown({
+	windowMs: 15 * 60 * 1000, // 15 minutes
+	delayAfter: 5, // Allow 5 requests per 15 minutes.
+	delayMs: (hits) => hits * 100, // Add 100 ms of delay to every request after the 5th one.
+	store: new RedisStore()
+})
 const { SwaggerTheme, SwaggerThemeNameEnum } = require('swagger-themes');
 const theme = new SwaggerTheme();
 
@@ -25,10 +22,8 @@ app.use(urlencoded({extended: true}))
 app.use(cors())
 app.use(json())
 app.use(apiv1)
-/*app.use(rateLimit({
-	windowMs: 15 * 60 * 1000, // 15 minutes
-	limit: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
-	}))*/
+app.use(limiter)
+
 app.use((error:any, req:any, res:any, next:any) => {
   console.log(error)
   console.log("Error Handling Middleware called")
@@ -51,10 +46,5 @@ app.use('/endpoints', swaggerUi.serve, swaggerUi.setup(swaggerDocument,{
 app.listen(port,  () => {
   console.log(`Example app listening on port ${port}`)
 })
-/*setTimeout(()=>{
-	 if(AppDataSource.isInitialized==true){
-	const {services} = require("./services/enum")
-	services.User.defaults().then(console.log).catch(console.log)}	     
 
-    },10000)*/
 module.exports = app;
