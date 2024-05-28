@@ -9,6 +9,8 @@ RUN mkdir /var/log/supervisor/
 #RUN yarn add @types/cors @decorators/express mysql2
 RUN npm install pm2 npm-run-all -g
 RUN yarn install -y
+ENV NODE_ENV production
+ENV ENABLE_OVERCOMMIT_MEMORY true
 ENV PORT 4000
 EXPOSE ${PORT}
 #CMD ["/usr/bin/supervisord","-c","./supervisord.conf"]
