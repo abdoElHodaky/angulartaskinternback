@@ -5,15 +5,19 @@ import RedisClient from 'ioredis'
 import application from "express"
 import { json,urlencoded } from "express";
 import cors from "cors";
-//import { AppDataSource } from "./_datasource";
 import { apiv1 } from "./routes";
 const app=application();
 const port = process.env.PORT||4000
+const redisClient=new RedisClient()
 const limiter = slowDown({
 	windowMs: 15 * 60 * 1000, // 15 minutes
 	delayAfter: 5, // Allow 5 requests per 15 minutes.
 	delayMs: (hits) => hits * 100, // Add 100 ms of delay to every request after the 5th one.
-	store: new RedisStore()
+	store:new RedisStore({
+		sendCommand: (command: string, ...args: string[]) =>
+			redisClient.send_command(command, ...args),
+	}
+	)
 })
 const { SwaggerTheme, SwaggerThemeNameEnum } = require('swagger-themes');
 const theme = new SwaggerTheme();
