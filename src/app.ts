@@ -9,6 +9,7 @@ import { apiv1 } from "./routes";
 const app=application();
 const port = process.env.PORT||4000
 const redisClient=new RedisClient()
+const expressPrettier = require('express-prettier')
 const limiter = slowDown({
 	windowMs: 15 * 60 * 1000, // 15 minutes
 	delayAfter: 5, // Allow 5 requests per 15 minutes.
@@ -20,13 +21,17 @@ const limiter = slowDown({
 })
 const { SwaggerTheme, SwaggerThemeNameEnum } = require('swagger-themes');
 const theme = new SwaggerTheme();
-
+app.enable('trust proxy')
 app.use(urlencoded({extended: true}))
 app.use(cors())
 app.use(json())
 app.use(apiv1)
 app.use(limiter)
-
+app.use(
+  expressPrettier(
+    { alwaysOn: true }
+  )
+)
 app.use((error:any, req:any, res:any, next:any) => {
   console.log(error)
   console.log("Error Handling Middleware called")
@@ -42,7 +47,7 @@ app.get("/",(req,res)=>{
 })
 app.use('/endpoints', swaggerUi.serve, swaggerUi.setup(swaggerDocument,{
    explorer: false,
-   customCss:theme.getBuffer(SwaggerThemeNameEnum.MONOKAI),
+   customCss:theme.getBuffer(SwaggerThemeNameEnum.MATERIAL),
    customSiteTitle:" Endpoints",
    //customfavIcon: "../assets/favicon-16x16.png"
 }));
