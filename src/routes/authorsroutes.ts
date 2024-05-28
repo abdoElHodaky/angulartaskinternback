@@ -44,7 +44,7 @@ authorsroutes.get("/authors",function(req:Request, res:Response){
     }).catch(console.log); */
   })
   
-  authorsroutes.get("/authors/:userid",function(req:Request, res:Response){
+//  authorsroutes.get("/authors/:userid",function(req:Request, res:Response){
     /*  #swagger.tags = ['Author'] 
     #swagger.description = 'Endpoint to get author' 
     #swagger.parameters['userid'] = {
@@ -83,7 +83,7 @@ authorsroutes.get("/authors",function(req:Request, res:Response){
     else{
       res.json({message:"user not found or you used invalid paramter"})
     }*/
-  })
+//  })
 /*
   authorsroutes.delete("/authors/:userid",function(req:Request, res:Response){
   /* #swagger.tags = ['Author'] 
