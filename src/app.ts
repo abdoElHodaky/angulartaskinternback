@@ -47,7 +47,7 @@ app.get("/",(req,res)=>{
     res.redirect("endpoints")
 })
 app.use('/endpoints', swaggerUi.serve, swaggerUi.setup(swaggerDocument,{
-   explorer: false,
+   
    customCss:theme.getBuffer(SwaggerThemeNameEnum.MATERIAL),
    customSiteTitle:" Endpoints",
    //customfavIcon: "../assets/favicon-16x16.png"
