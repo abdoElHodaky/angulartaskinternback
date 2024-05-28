@@ -11,7 +11,7 @@ import { Verification } from "./entity/Verification";
 import { Payment } from "./entity/Payment";
 export const _AppDataSource = new DataSource({
     type: "sqlite",
-    database:"database",
+    database:"database.sqlite",
     cache: {
         type:"ioredis",
         duration: 300000
