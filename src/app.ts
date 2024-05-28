@@ -22,6 +22,7 @@ const limiter = slowDown({
 const { SwaggerTheme, SwaggerThemeNameEnum } = require('swagger-themes');
 const theme = new SwaggerTheme();
 app.enable('trust proxy')
+app.set('trust proxy', 2)
 app.use(urlencoded({extended: true}))
 app.use(cors())
 app.use(json())
