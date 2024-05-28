@@ -15,7 +15,7 @@ const limiter = slowDown({
 	delayAfter: 5, // Allow 5 requests per 15 minutes.
 	delayMs: (hits) => hits * 100, // Add 100 ms of delay to every request after the 5th one.
 	store:new RedisStore({
-		sendCommand: (command: string, ...args: string[]) => redisClient.send_command(command, ...args)
+		sendCommand: (command: string, ...args: string[]) => redisClient.sendCommand(command, ...args)
 	  }
 	)
 })
