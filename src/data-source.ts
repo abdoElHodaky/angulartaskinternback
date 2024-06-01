@@ -10,10 +10,13 @@ import { User } from "./entity/User"
 import { Verification } from "./entity/Verification";
 import { Payment } from "./entity/Payment";
 export const _AppDataSource = new DataSource({
-    type: "sqlite",
+    type: "better-sqlite3",
     database:"database.sqlite",
     cache: {
         type:"ioredis",
+        options: {
+            url:"rediss://red-cp4soqocmk4c73eom0p0:kLoGjFxqLJRRHFQs1QUaImdvOtnNdF19@oregon-redis.render.com:6379"
+        },
         duration: 300000
     },
     synchronize: true,
