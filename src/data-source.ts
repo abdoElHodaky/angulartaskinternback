@@ -15,7 +15,7 @@ export const _AppDataSource = new DataSource({
     cache: {
         type:"ioredis",
         options: {
-            url:"rediss://red-cp4soqocmk4c73eom0p0:kLoGjFxqLJRRHFQs1QUaImdvOtnNdF19@oregon-redis.render.com:6379"
+       ...(require("redis-url").parse("rediss://red-cp4soqocmk4c73eom0p0:kLoGjFxqLJRRHFQs1QUaImdvOtnNdF19@oregon-redis.render.com:6379"))
         },
         duration: 300000
     },
