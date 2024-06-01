@@ -8,7 +8,7 @@ import cors from "cors";
 import { apiv1 } from "./routes";
 const app=application();
 const port = process.env.PORT||4000
-const redisClient=new RedisClient()
+const redisClient=new RedisClient(process.env.REDIS)
 const expressPrettier = require('express-prettier')
 const limiter = slowDown({
 	windowMs: 15 * 60 * 1000, // 15 minutes
