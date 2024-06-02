@@ -1,7 +1,7 @@
 import { services } from "../services/enum";
 import { Article ,User } from "../entity/"
 import { AppDataSource } from "../_datasource";
-//import { CreateArticleDto } from "../dto/create-article.dto"
+import { dateToReadable } from "../helpers"
 import { Res, Post, Controller, Get, Body , Params ,Delete } from '@decorators/express';
 import { Response ,Request} from "express"
 import { isNumeric,nationalIdvalid } from "../helpers";
@@ -23,7 +23,15 @@ export class UserController {
 
     //let resd:User[]=await AppDataSource.getRepository(User).find()
     let users= await this.userS.all()
-    return users
+    if(users instanceof Array) return users.map((user,inx)=>{
+      const {createdAt,updatedAt,...rest}
+      return {
+        createdAt:dateToReadable(createdAt),
+        updatedAt:dateToReadable(updatedAt),
+        ...rest
+      }
+    })
+   else  return users
   }
 
   @Get("/:id")
