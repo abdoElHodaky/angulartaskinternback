@@ -22,10 +22,10 @@ export class ArticleController {
     if(articles instanceof Array) return articles.map((article:Article,inx:number)=>{
       const {createdAt,updatedAt,...rest}=article
       return {
+        ...rest,
         createdAt:dateToReadable(createdAt),
         updatedAt:dateToReadable(updatedAt),
-        ...rest
-      } as Article
+      } 
     })
    else  return articles
   }
