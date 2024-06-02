@@ -22,9 +22,9 @@ export class AuthorController {
       if(users instanceof Array) return users.map((user:Author,inx:number)=>{
       const {createdAt,updatedAt,...rest}=user
       return {
+        ...rest,
         createdAt:dateToReadable(createdAt),
         updatedAt:dateToReadable(updatedAt),
-        ...rest
       }
     })
    else  return users
