@@ -10,7 +10,8 @@ export const _AppDataSource = new DataSource({
     cache: {
         type:"ioredis",
         options: {
-       ...(require("redis-url").parse(process.env.REDIS)),
+       ...(require("redis-url").parse(process.env.REDIS))
+        },
         duration: 300000
     },
     synchronize: true,
