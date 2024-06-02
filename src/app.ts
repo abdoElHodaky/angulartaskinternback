@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { slowDown } from 'express-slow-down'
 import { RedisStore } from 'rate-limit-redis'
-import RedisClient from 'ioredis'
+import RedisClient,Command,WriteableStream from 'ioredis'
 import application from "express"
 import { json,urlencoded } from "express";
 import cors from "cors";
@@ -15,7 +15,7 @@ const limiter = slowDown({
 	delayAfter: 5, // Allow 5 requests per 15 minutes.
 	delayMs: (hits) => hits * 100, // Add 100 ms of delay to every request after the 5th one.
 	store:new RedisStore({
-		sendCommand: (command: any, args: any) => redisClient.sendCommand(command, args)
+		sendCommand: (command: Command, args: WriteableStream) => redisClient.sendCommand(command, args)
 	  }
 	)
 })
