@@ -17,8 +17,9 @@ export const _AppDataSource = new DataSource({
         duration: 300000
     },
     synchronize: true,
-    logging: false,
-    entities: [User,Article ,Author,Attachment,
+    logging:[ "all"],
+    logger:"advanced-console",
+    entities: [User,Author,Attachment,Article
        Verification,supTicket,Payment,Book],
     migrations: [],
     subscribers: [],
