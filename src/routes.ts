@@ -10,11 +10,18 @@ apiv1.get("/suptickets",(req,res)=>{
 /* 	#swagger.tags = ['suptickets']
         #swagger.description = 'Endpoint to get tickets' 
     */
-    
+    const {dateToReadable}=require("./helpers")
     AppDataSource.manager.find(supTicket).
     then(d=>{
         //d.map((el,i)=>console.log(el.user))
-        res.json(d)
+        res.json(d.map((ticket:supTicket,inx:number)=>{
+        const {createdAt,updatedAt,...rest}=ticket
+        return{
+        ...rest,
+        createdAt:dateToReadable(createdAt),
+        updatedAt:dateToReadable(updatedAt),
+        }
+        }))
     }).catch(console.log)
 })
 apiv1.post("/suptickets/create",(req,res)=>{
