@@ -1,5 +1,5 @@
 import { Entity,Column,ManyToOne,PrimaryGeneratedColumn,
-       CreateDateColumn,UpdateColumnDate} from "typeorm"
+       CreateDateColumn,UpdateDateColumn} from "typeorm"
 import { Author } from "./";
 
 @Entity()
