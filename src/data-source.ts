@@ -19,8 +19,9 @@ export const _AppDataSource = new DataSource({
     synchronize: true,
     logging:"all",
     logger:"advanced-console",
-    entities: [User,Author,Attachment,Article,
-       Verification,supTicket,Payment,Book],
+    entities: /*[User,Author,Attachment,Article,
+       Verification,supTicket,Payment,Book]*/
+    "./entity/index.ts",
     migrations: [],
     subscribers: [],
     extra: {
