@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { slowDown } from 'express-slow-down'
 import { RedisStore } from 'rate-limit-redis'
-import {Command},WriteableStream,RedisClient   from 'ioredis'
+import RedisClient from 'ioredis'
 import application from "express"
 import { json,urlencoded } from "express";
 import cors from "cors";
