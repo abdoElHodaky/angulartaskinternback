@@ -25,7 +25,7 @@ export class ArticleController {
         createdAt:dateToReadable(createdAt),
         updatedAt:dateToReadable(updatedAt),
         ...rest
-      }
+      } as Article
     })
    else  return articles
   }
