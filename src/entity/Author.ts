@@ -2,7 +2,7 @@ import { Entity ,Column,PrimaryGeneratedColumn, OneToMany, ChildEntity} from "ty
 import { Article } from "./Article";
 import { User } from "./User";
 
-@Entity()
+//@Entity()
 @ChildEntity()
 export class Author extends User {
     
