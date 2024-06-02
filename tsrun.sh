@@ -8,5 +8,5 @@ fi
 npm-run-all build swaggergen 
 
 #node ./dist/grpc-reflect.js
-npm-run-all --parallel redis start
+npm-run-all --parallel start 
 #node dist/app.js
