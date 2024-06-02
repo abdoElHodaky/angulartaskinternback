@@ -18,9 +18,16 @@ export class AuthorController {
     /* 	#swagger.tags = ['User']
         #swagger.description = 'Endpoint to get users' */
 
-    let resd:Author[]=await this.authorS.all()
-      //await AppDataSource.getRepository(Author).find()
-    return resd
+    let users=await this.authorS.all()
+      if(users instanceof Array) return users.map((user:Author,inx:number)=>{
+      const {createdAt,updatedAt,...rest}=user
+      return {
+        createdAt:dateToReadable(createdAt),
+        updatedAt:dateToReadable(updatedAt),
+        ...rest
+      }
+    })
+   else  return users
   }
 
   @Post("")
