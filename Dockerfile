@@ -2,7 +2,7 @@ FROM node:18-alpine
 #WORKDIR /app
 COPY . .
 RUN apk add --no-cache tzdata  sqlite-dev postgresql-dev mysql-dev protobuf protobuf-dev redis supervisor sudo
-RUN rm -rf package-lock.json && yarn add ts-proto @grpc/grpc-js swagger-themes class-transform class-transformer class-validator paytabs_pt2 ioredis express-prettier express-slow-down redis-url rate-limit-redis better-sqlite3
+RUN rm -rf package-lock.json && yarn add ts-proto @grpc/grpc-js swagger-themes class-transform class-transformer class-validator paytabs_pt2 momentjs ioredis express-prettier express-slow-down redis-url rate-limit-redis better-sqlite3
   
 RUN mkdir /var/log/supervisor/
 #RUN yarn add common-errors @types/common-errors express-rate-limit
