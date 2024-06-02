@@ -53,7 +53,7 @@ app.get("/",(req,res)=>{
 })
 app.use('/endpoints', swaggerUi.serve, swaggerUi.setup(swaggerDocument,{
    
-   customCss:theme.getBuffer(SwaggerThemeNameEnum.MATERIAL),
+   customCss:theme.getBuffer(SwaggerThemeNameEnum.NORD_DARK),
    customSiteTitle:" Endpoints",
    //customfavIcon: "../assets/favicon-16x16.png"
 }));
