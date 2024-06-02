@@ -19,7 +19,7 @@ export const _AppDataSource = new DataSource({
     synchronize: true,
     logging:[ "all"],
     logger:"advanced-console",
-    entities: [User,Author,Attachment,Article
+    entities: [User,Author,Attachment,Article,
        Verification,supTicket,Payment,Book],
     migrations: [],
     subscribers: [],
