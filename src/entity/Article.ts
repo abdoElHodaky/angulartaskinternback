@@ -1,4 +1,5 @@
-import { Entity,Column,ManyToOne,PrimaryGeneratedColumn} from "typeorm"
+import { Entity,Column,ManyToOne,PrimaryGeneratedColumn,
+       CreateDateColumn,UpdateColumnDate} from "typeorm"
 import { Author } from "./";
 
 @Entity()
@@ -17,6 +18,11 @@ export class Article {
 
     @Column({type: "varchar", nullable: true})
     cateogry: string;
+    
+    @CreateDateColumn({type:"date"})
+    createdAt: Date;
 
+    @UpdateDateColumn({type:"date"})
+    updatedAt: Date;
     @ManyToOne(()=>Author,author=>author.articles) author:Author;
 }
