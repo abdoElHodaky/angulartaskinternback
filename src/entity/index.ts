@@ -1,6 +1,6 @@
 export { Article } from "./Article"
-export { User } from "./User"
-export { Author } from "./User"
+export { User ,Author} from "./User"
+//export { Author } from "./User"
 export { supTicket } from "./supTicket"
 export { Attachment } from "./Attachment"
 export { Verification } from "./Verification"
