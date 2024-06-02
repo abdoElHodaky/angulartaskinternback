@@ -26,9 +26,9 @@ export class UserController {
     if(users instanceof Array) return users.map((user:User,inx:number)=>{
       const {createdAt,updatedAt,...rest}=user
       return {
+        ...rest,
         createdAt:dateToReadable(createdAt),
         updatedAt:dateToReadable(updatedAt),
-        ...rest
       }
     })
    else  return users
