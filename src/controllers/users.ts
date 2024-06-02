@@ -24,7 +24,7 @@ export class UserController {
     //let resd:User[]=await AppDataSource.getRepository(User).find()
     let users= await this.userS.all()
     if(users instanceof Array) return users.map((user:User,inx:number)=>{
-      const {createdAt,updatedAt,...rest}=usee
+      const {createdAt,updatedAt,...rest}=user
       return {
         createdAt:dateToReadable(createdAt),
         updatedAt:dateToReadable(updatedAt),
