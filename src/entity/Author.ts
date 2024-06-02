@@ -6,7 +6,7 @@ import { User } from "./User";
 @ChildEntity()
 export class Author extends User {
     
-    @Column({default:"author"})
+    @Column({default:"Author"})
     type:string
 
     @OneToMany(()=>Article,article=>article.author) articles:Article[];
