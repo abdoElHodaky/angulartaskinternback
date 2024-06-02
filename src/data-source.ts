@@ -16,8 +16,8 @@ export const _AppDataSource = new DataSource({
     },
     synchronize: true,
     logging: false,
-    entities: [User,supTicket,Article,
-      Verification,Author,Attachment,Book,Payment],
+    entities: [User,Author,Article , Attachment,
+       Verification,supTicket,Payment,Book],
     migrations: [],
     subscribers: [],
     extra: {
