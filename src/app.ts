@@ -1,14 +1,14 @@
 import "reflect-metadata";
 import { slowDown } from 'express-slow-down'
 import { RedisStore } from 'rate-limit-redis'
-import {Redis} from 'ioredis'
+import RedisClient from 'ioredis'
 import application from "express"
 import { json,urlencoded } from "express";
 import cors from "cors";
 import { apiv1 } from "./routes";
 const app=application();
 const port = process.env.PORT||4000
-const redisClient=Redis.createClient({
+const redisClient=new RedisClient({
 	//...(require("redis-url").parse(process.env.REDIS))
 	host:"red-cpdq71f109ks73elqfu0",
 	port:6379
