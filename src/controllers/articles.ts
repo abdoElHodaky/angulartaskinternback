@@ -18,8 +18,16 @@ export class ArticleController {
   async all():Promise<Article[]> {
    /* 	#swagger.tags = ['Article']
         #swagger.description = 'Endpoint to get articles' */
-    let articles:Article[]=await this.articleS.all()
-    return articles
+    let articles=await this.articleS.all()
+    if(articles instanceof Array) return articles.map((article:Article,inx:number)=>{
+      const {createdAt,updatedAt,...rest}=article
+      return {
+        createdAt:dateToReadable(createdAt),
+        updatedAt:dateToReadable(updatedAt),
+        ...rest
+      }
+    })
+   else  return articles
   }
 
   @Post("")
