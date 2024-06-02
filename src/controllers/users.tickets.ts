@@ -24,7 +24,14 @@ export class UserTicketController {
            }
             })*/
     let tickets=await this.userticketS.all(id)
-    if (tickets instanceof Array) return tickets
+    if(tickets instanceof Array) return tickets.map((ticket:supTicket,inx:number)=>{
+      const {createdAt,updatedAt,...rest}=ticket
+      return {
+        createdAt:dateToReadable(createdAt),
+        updatedAt:dateToReadable(updatedAt),
+        ...rest
+      }
+    })
     else res.status(404).jsonp({message:tickets?.message+" requested user"})
   }
   
